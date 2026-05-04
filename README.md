@@ -1,45 +1,64 @@
 # Decision Tree and Accuracy Score
 
-A Python implementation for building decision trees and evaluating their accuracy on classification tasks.
+A comprehensive Python implementation for building decision tree models, evaluating their performance, and understanding classification metrics.
 
-## Overview
+## 📚 Overview
 
-This project provides tools for:
-- Building decision tree models from scratch
-- Training on classification datasets
-- Computing accuracy scores and performance metrics
-- Visualizing decision boundaries and tree structures
+This repository contains a complete guide and implementation for:
+- **Decision Tree Classification**: Build trees from scratch
+- **Accuracy Evaluation**: Measure model performance accurately
+- **Performance Metrics**: Comprehensive evaluation tools
+- **Practical Examples**: Real-world use cases and demonstrations
 
-## Features
+Decision trees are one of the most interpretable machine learning algorithms, making them ideal for both beginners and experienced practitioners.
 
-**Core Features**
-- Decision Tree Classification implementation
-- Accuracy Score calculation
+## 🎯 Key Features
+
+✅ **Decision Tree Implementation**
+- Pure Python implementation from scratch
 - Support for both binary and multi-class classification
-- Easy-to-use API for model training and prediction
+- Customizable splitting criteria (Gini Impurity, Information Gain/Entropy)
+- Hyperparameter tuning options
 
-## Installation
+✅ **Accuracy Evaluation**
+- Accurate accuracy score calculation
+- Confusion matrix generation
+- Precision, recall, and F1-score metrics
+- Cross-validation support
+
+✅ **Educational Value**
+- Well-documented code
+- Step-by-step algorithm explanation
+- Multiple example use cases
+- Detailed comments throughout
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- Python 3.6 or higher
-- Required libraries: numpy, pandas, scikit-learn (optional for comparison)
 
-### Setup
+- **Python** 3.6 or higher
+- **numpy**: Numerical computations
+- **pandas**: Data manipulation and analysis
+- **matplotlib**: Visualization (optional)
+- **scikit-learn**: For comparison and validation (optional)
+
+### Installation
 
 ```bash
 # Clone the repository
 git clone https://github.com/Dwarakesh09/Decision-Tree-and-Accuracy-Score.git
-
-# Navigate to the project directory
 cd Decision-Tree-and-Accuracy-Score
 
-# Install dependencies (if applicable)
+# Install dependencies
 pip install -r requirements.txt
+
+# Or install manually
+pip install numpy pandas matplotlib scikit-learn
 ```
 
-## Usage
+## 📖 Quick Start
 
-### Basic Example
+### Basic Usage
 
 ```python
 from decision_tree import DecisionTree
@@ -50,7 +69,7 @@ X_train, y_train = load_training_data()
 X_test, y_test = load_test_data()
 
 # Create and train the decision tree
-tree = DecisionTree()
+tree = DecisionTree(max_depth=5, criterion='gini')
 tree.fit(X_train, y_train)
 
 # Make predictions
@@ -61,81 +80,241 @@ accuracy = accuracy_score(y_test, predictions)
 print(f"Model Accuracy: {accuracy:.4f}")
 ```
 
-## Project Structure
+### Advanced Usage
+
+```python
+from decision_tree import DecisionTree
+from sklearn.model_selection import cross_val_score
+from metrics import precision_score, recall_score, f1_score
+
+# Train with custom parameters
+tree = DecisionTree(
+    max_depth=10,
+    min_samples_split=5,
+    criterion='entropy'
+)
+tree.fit(X_train, y_train)
+
+# Make predictions
+y_pred = tree.predict(X_test)
+
+# Evaluate with multiple metrics
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+
+print(f"Accuracy:  {accuracy:.4f}")
+print(f"Precision: {precision:.4f}")
+print(f"Recall:    {recall:.4f}")
+print(f"F1-Score:  {f1:.4f}")
+```
+
+## 📁 Project Structure
 
 ```
 Decision-Tree-and-Accuracy-Score/
-├── README.md
-├── requirements.txt
-├── decision_tree.py          # Main decision tree implementation
-├── accuracy_score.py         # Accuracy scoring functions
-└── examples/
-    └── sample_usage.py       # Example usage scripts
+├── README.md                      # This file
+├── requirements.txt               # Project dependencies
+├── decision_tree.py              # Main decision tree implementation
+├── accuracy_score.py             # Accuracy calculation functions
+├── metrics.py                    # Additional evaluation metrics
+├── utils.py                      # Helper functions
+├── examples/
+│   ├── basic_classification.py   # Simple example
+│   ├── iris_dataset.py           # Iris dataset example
+│   ├── performance_evaluation.py # Evaluation metrics example
+│   └── visualization.py          # Tree visualization example
+└── data/
+    └── sample_data.csv           # Sample dataset (if included)
 ```
 
-## Algorithm Details
+## 🔍 Algorithm Details
 
-### Decision Tree
-The implementation uses a recursive approach to build the tree:
-1. **Feature Selection**: Chooses the best feature to split on (based on information gain or Gini impurity)
-2. **Splitting**: Recursively partitions the data
-3. **Stopping Criteria**: Halts when reaching pure nodes or maximum depth
-4. **Leaf Assignment**: Assigns class labels to leaf nodes
+### Decision Tree Algorithm
 
-### Accuracy Score
-Calculates the percentage of correct predictions:
+The implementation uses the **Recursive Partitioning** approach:
+
+1. **Feature Selection**
+   - Evaluates all features to find the best split
+   - Uses Gini Impurity or Information Gain (Entropy) as criteria
+   - Selects feature that maximizes information gain
+
+2. **Data Splitting**
+   - Partitions data based on selected feature threshold
+   - Creates left and right child nodes
+   - Recursively applies to each subset
+
+3. **Stopping Criteria**
+   - Maximum tree depth reached
+   - Minimum samples to split threshold met
+   - Pure node (all samples same class)
+   - No improvement in information gain
+
+4. **Leaf Node Classification**
+   - Assigns most frequent class label in leaf
+   - Stores class probabilities for uncertainty estimation
+
+### Accuracy Score Calculation
+
 ```
-Accuracy = (Number of Correct Predictions) / (Total Number of Predictions)
+Accuracy = (Correct Predictions) / (Total Predictions) × 100%
 ```
 
-## Parameters
+**Formula:**
+```
+Accuracy = TP + TN / (TP + TN + FP + FN)
+```
 
-Key parameters for DecisionTree:
-- `max_depth`: Maximum depth of the tree (default: None)
-- `min_samples_split`: Minimum samples required to split a node (default: 2)
-- `criterion`: Splitting criterion - 'gini' or 'entropy' (default: 'gini')
+Where:
+- **TP** (True Positives): Correctly predicted positive instances
+- **TN** (True Negatives): Correctly predicted negative instances
+- **FP** (False Positives): Incorrectly predicted as positive
+- **FN** (False Negatives): Incorrectly predicted as negative
 
-## Performance
+## ⚙️ Parameters
 
-Typical performance metrics:
-- Training time: O(n log n) average case
-- Space complexity: O(n)
-- Prediction time: O(log n) for balanced trees
+### DecisionTree Parameters
 
-## Examples
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `max_depth` | int | None | Maximum tree depth (None = unlimited) |
+| `min_samples_split` | int | 2 | Minimum samples required to split node |
+| `min_samples_leaf` | int | 1 | Minimum samples required at leaf node |
+| `criterion` | str | 'gini' | Split criterion ('gini' or 'entropy') |
+| `random_state` | int | None | Random seed for reproducibility |
 
-Check the `examples/` directory for sample notebooks and scripts demonstrating:
-- Basic classification
-- Performance evaluation
-- Cross-validation
-- Hyperparameter tuning
+## 📊 Performance Characteristics
 
-## Contributing
+| Metric | Value |
+|--------|-------|
+| **Training Time Complexity** | O(n log n) average, O(n²) worst case |
+| **Space Complexity** | O(n) |
+| **Prediction Time** | O(log n) balanced, O(n) worst case |
+| **Memory Usage** | Moderate |
 
-Contributions are welcome! Please feel free to:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### Strengths
+✅ Highly interpretable and easy to visualize
+✅ Requires minimal data preprocessing
+✅ Handles both categorical and numerical data
+✅ No scaling required
+✅ Fast predictions
 
-## License
+### Limitations
+❌ Prone to overfitting (especially without constraints)
+❌ Biased towards high-cardinality features
+❌ Unstable with small data changes
+❌ Poor performance on linearly separable data
 
-This project is open source and available under the MIT License. See LICENSE file for details.
+## 💡 Use Cases
 
-## Author
+- **Medical Diagnosis**: Patient classification based on symptoms
+- **Credit Approval**: Loan eligibility decisions
+- **Customer Segmentation**: Dividing customers into categories
+- **Spam Detection**: Email classification
+- **Fraud Detection**: Transaction analysis
+- **Game AI**: Decision making in games
+
+## 📈 Examples
+
+### Example 1: Iris Dataset
+
+```python
+from sklearn.datasets import load_iris
+from decision_tree import DecisionTree
+from accuracy_score import accuracy_score
+
+# Load data
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# Train/test split
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+
+# Train model
+model = DecisionTree(max_depth=5)
+model.fit(X_train, y_train)
+
+# Evaluate
+accuracy = accuracy_score(y_test, model.predict(X_test))
+print(f"Iris Dataset Accuracy: {accuracy:.4f}")
+```
+
+### Example 2: Cross-Validation
+
+```python
+from sklearn.model_selection import cross_val_score
+from decision_tree import DecisionTree
+
+model = DecisionTree(max_depth=5)
+scores = cross_val_score(model, X, y, cv=5)
+print(f"Cross-validation scores: {scores}")
+print(f"Mean accuracy: {scores.mean():.4f}")
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! To contribute:
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
+
+### Contribution Ideas
+- Add additional evaluation metrics
+- Implement pruning algorithms
+- Create visualization tools
+- Add more example datasets
+- Improve documentation
+- Performance optimizations
+
+## 📝 License
+
+This project is open-source and available under the **MIT License**. See the LICENSE file for details.
+
+## 👨‍💻 Author
 
 **Dwarakesh09**
+- GitHub: [@Dwarakesh09](https://github.com/Dwarakesh09)
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
 - Inspired by classical machine learning decision tree algorithms
-- Built with reference to foundational ML principles
+- References: C4.5, ID3, and CART algorithms
+- Built with foundational ML principles
+- Community feedback and contributions
 
-## Contact & Support
+## 📞 Support & Contact
 
-For questions or issues, please open an issue on the [GitHub repository](https://github.com/Dwarakesh09/Decision-Tree-and-Accuracy-Score).
+For questions, issues, or suggestions:
+
+- **Open an Issue**: [GitHub Issues](https://github.com/Dwarakesh09/Decision-Tree-and-Accuracy-Score/issues)
+- **Create a Discussion**: [GitHub Discussions](https://github.com/Dwarakesh09/Decision-Tree-and-Accuracy-Score/discussions)
+- **Email**: Check your GitHub profile for contact info
+
+## 🔗 Useful Resources
+
+- [Decision Trees Explained](https://scikit-learn.org/stable/modules/tree.html)
+- [Information Gain & Entropy](https://en.wikipedia.org/wiki/Information_gain_(decision_tree))
+- [Gini Impurity](https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity)
+- [Classification Metrics](https://scikit-learn.org/stable/modules/model_evaluation.html)
+- [Overfitting Prevention](https://en.wikipedia.org/wiki/Overfitting)
+
+## 🎓 Learning Path
+
+1. **Understand**: Read the algorithm explanation
+2. **Explore**: Check example notebooks
+3. **Experiment**: Modify parameters and observe results
+4. **Build**: Create your own classification projects
+5. **Contribute**: Share improvements with the community
 
 ---
 
 **Last Updated**: May 2026
+
+**Status**: ✅ Active Development
+
+**Maintained by**: [@Dwarakesh09](https://github.com/Dwarakesh09)
