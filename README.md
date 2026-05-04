@@ -2,7 +2,7 @@
 
 A comprehensive Python implementation for building decision tree models, evaluating their performance, and understanding classification metrics.
 
-## 📚 Overview
+##  Overview
 
 This repository contains a complete guide and implementation for:
 - **Decision Tree Classification**: Build trees from scratch
@@ -12,27 +12,27 @@ This repository contains a complete guide and implementation for:
 
 Decision trees are one of the most interpretable machine learning algorithms, making them ideal for both beginners and experienced practitioners.
 
-## 🎯 Key Features
+##  Key Features
 
-✅ **Decision Tree Implementation**
+**Decision Tree Implementation**
 - Pure Python implementation from scratch
 - Support for both binary and multi-class classification
 - Customizable splitting criteria (Gini Impurity, Information Gain/Entropy)
 - Hyperparameter tuning options
 
-✅ **Accuracy Evaluation**
+**Accuracy Evaluation**
 - Accurate accuracy score calculation
 - Confusion matrix generation
 - Precision, recall, and F1-score metrics
 - Cross-validation support
 
-✅ **Educational Value**
+**Educational Value**
 - Well-documented code
 - Step-by-step algorithm explanation
 - Multiple example use cases
 - Detailed comments throughout
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -56,7 +56,7 @@ pip install -r requirements.txt
 pip install numpy pandas matplotlib scikit-learn
 ```
 
-## 📖 Quick Start
+## Quick Start
 
 ### Basic Usage
 
@@ -110,7 +110,7 @@ print(f"Recall:    {recall:.4f}")
 print(f"F1-Score:  {f1:.4f}")
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Decision-Tree-and-Accuracy-Score/
@@ -129,7 +129,7 @@ Decision-Tree-and-Accuracy-Score/
     └── sample_data.csv           # Sample dataset (if included)
 ```
 
-## 🔍 Algorithm Details
+##  Algorithm Details
 
 ### Decision Tree Algorithm
 
@@ -172,7 +172,7 @@ Where:
 - **FP** (False Positives): Incorrectly predicted as positive
 - **FN** (False Negatives): Incorrectly predicted as negative
 
-## ⚙️ Parameters
+## Parameters
 
 ### DecisionTree Parameters
 
@@ -184,7 +184,7 @@ Where:
 | `criterion` | str | 'gini' | Split criterion ('gini' or 'entropy') |
 | `random_state` | int | None | Random seed for reproducibility |
 
-## 📊 Performance Characteristics
+## Performance Characteristics
 
 | Metric | Value |
 |--------|-------|
@@ -194,19 +194,19 @@ Where:
 | **Memory Usage** | Moderate |
 
 ### Strengths
-✅ Highly interpretable and easy to visualize
-✅ Requires minimal data preprocessing
-✅ Handles both categorical and numerical data
-✅ No scaling required
-✅ Fast predictions
+Highly interpretable and easy to visualize
+Requires minimal data preprocessing
+Handles both categorical and numerical data
+No scaling required
+Fast predictions
 
 ### Limitations
-❌ Prone to overfitting (especially without constraints)
-❌ Biased towards high-cardinality features
-❌ Unstable with small data changes
-❌ Poor performance on linearly separable data
+Prone to overfitting (especially without constraints)
+Biased towards high-cardinality features
+Unstable with small data changes
+Poor performance on linearly separable data
 
-## 💡 Use Cases
+##  Use Cases
 
 - **Medical Diagnosis**: Patient classification based on symptoms
 - **Credit Approval**: Loan eligibility decisions
@@ -215,7 +215,7 @@ Where:
 - **Fraud Detection**: Transaction analysis
 - **Game AI**: Decision making in games
 
-## 📈 Examples
+## Examples
 
 ### Example 1: Iris Dataset
 
@@ -253,7 +253,7 @@ print(f"Cross-validation scores: {scores}")
 print(f"Mean accuracy: {scores.mean():.4f}")
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! To contribute:
 
@@ -271,31 +271,30 @@ Contributions are welcome! To contribute:
 - Improve documentation
 - Performance optimizations
 
-## 📝 License
+## License
 
 This project is open-source and available under the **MIT License**. See the LICENSE file for details.
 
-## 👨‍💻 Author
+## Author
 
 **Dwarakesh09**
 - GitHub: [@Dwarakesh09](https://github.com/Dwarakesh09)
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Inspired by classical machine learning decision tree algorithms
 - References: C4.5, ID3, and CART algorithms
 - Built with foundational ML principles
 - Community feedback and contributions
 
-## 📞 Support & Contact
+## Support & Contact
 
 For questions, issues, or suggestions:
 
 - **Open an Issue**: [GitHub Issues](https://github.com/Dwarakesh09/Decision-Tree-and-Accuracy-Score/issues)
 - **Create a Discussion**: [GitHub Discussions](https://github.com/Dwarakesh09/Decision-Tree-and-Accuracy-Score/discussions)
-- **Email**: Check your GitHub profile for contact info
-
-## 🔗 Useful Resources
+- **Email**: m14332121@gmail.com
+## Useful Resources
 
 - [Decision Trees Explained](https://scikit-learn.org/stable/modules/tree.html)
 - [Information Gain & Entropy](https://en.wikipedia.org/wiki/Information_gain_(decision_tree))
@@ -303,7 +302,7 @@ For questions, issues, or suggestions:
 - [Classification Metrics](https://scikit-learn.org/stable/modules/model_evaluation.html)
 - [Overfitting Prevention](https://en.wikipedia.org/wiki/Overfitting)
 
-## 🎓 Learning Path
+## Learning Path
 
 1. **Understand**: Read the algorithm explanation
 2. **Explore**: Check example notebooks
@@ -315,6 +314,6 @@ For questions, issues, or suggestions:
 
 **Last Updated**: May 2026
 
-**Status**: ✅ Active Development
+**Status**: Active Development
 
 **Maintained by**: [@Dwarakesh09](https://github.com/Dwarakesh09)
