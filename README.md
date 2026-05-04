@@ -12,7 +12,7 @@ This project provides tools for:
 
 ## Features
 
-✨ **Core Features**
+**Core Features**
 - Decision Tree Classification implementation
 - Accuracy Score calculation
 - Support for both binary and multi-class classification
